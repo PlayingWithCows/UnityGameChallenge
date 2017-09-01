@@ -1,0 +1,1 @@
+INSERT INTO users (user_email, user_name, user_pwd) VALUES ('playwithcows@gmail.com', 'PlayingWithCows', 'testpassword');
