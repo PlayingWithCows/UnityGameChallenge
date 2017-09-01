@@ -19,7 +19,7 @@
     <br />
     <div>
         <p>Create Account:</p>
-        <form>
+        <form action="signup.php" method="POST">
             <input name="username" type="text" placeholder="Username"/>
             <input name="password1" type="password" placeholder="Password"/>
             <input name="password2" type="password" placeholder="Password" />
