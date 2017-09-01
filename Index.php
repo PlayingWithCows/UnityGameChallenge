@@ -25,12 +25,12 @@ include_once 'includes/dbh.inc.php';
     <br />
     <div>
         <p>Create Account:</p>
-        <form action="signup.php" method="POST">
+        <form action="includes/signup.inc.php" method="POST">
             <input name="username" type="text" placeholder="Username"/>
             <input name="password1" type="password" placeholder="Password"/>
-            <input name="password2" type="password" placeholder="Password" />
+            <input name="password2" type="password" placeholder="Password again" />
             <input name="emailadd" type="email" placeholder="E-Mail Address" />
-            <button type="submit">Create Account</button>
+            <button type="submit" name="submit">Create Account</button>
         </form>
 
     </div>
@@ -39,18 +39,11 @@ include_once 'includes/dbh.inc.php';
     <div>
         <?php
 
-        $sql ="SELECT * FROM users;";
-        $result = mysqli_query($conn, $sql);
+        $sql ="INSERT INTO users (user_email, user_name, user_pwd) VALUES ('playwithcows@gmail.com', 'PlayingWithCows', 'testpassword');";
+        mysqli_query($conn, $sql);
 
-        $resultCheck = mysqli_num_rows($result);
 
-        if($resultCheck>0){
-            while ($row = mysqli_fetch_assoc($result))
-            {
-            	echo $row['user_name'];
-            }
-            
-        }
+      
 
 
         ?>
