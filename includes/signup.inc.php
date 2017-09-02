@@ -7,8 +7,26 @@ $username = mysqli_real_escape_string($conn, $_POST['username']);
 $password = mysqli_real_escape_string($conn, $_POST['password1']);
 $errorfound = false;
 
-if(!$password===mysqli_real_escape_string($conn, $_POST['password2']);){
+if($password!==mysqli_real_escape_string($conn, $_POST['password2'])){
     $errorfound=true;
+}
+
+if(!$errorfound){
+    $sql ="SELECT * FROM users WHERE user_name=?;";
+    //prepared statement
+    $stmt = mysqli_stmt_init($conn);
+    //prepare the prepared statement
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        echo "SQL statement failed";
+    } else {
+        //bind parameters to the placeholder
+        mysqli_stmt_bind_param($stmt, "s", $username);
+        //run parameters inside database
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        //add "if result says there are results for the query --> errorfound = true"
+    }
 }
 
 if(!$errorfound){
@@ -23,4 +41,4 @@ if(!mysqli_stmt_prepare($stmt,$sql)){
 
 header("Location: ../index.php?signup=success");
 
-}else{"Location: ../index.php?signup=failed"}
+}else{header("Location: ../index.php?signup=failed");}
