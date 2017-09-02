@@ -43,9 +43,6 @@ $data ="admin";
         }
     }
 
-
-
-
     ?>
 
 </body>
